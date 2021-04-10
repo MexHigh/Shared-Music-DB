@@ -15,6 +15,9 @@
         "react-dom": "^17.0.0"
     },
     "devDependencies": {
-        "@cloudflare/wrangler": "^1.15.0"
+        "@cloudflare/wrangler": "^1.15.0",
+        "autoprefixer": "^10.2.5",
+        "postcss": "^8.2.9",
+        "tailwindcss": "^2.1.1"
     }
 }

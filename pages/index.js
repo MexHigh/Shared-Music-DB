@@ -1,4 +1,4 @@
-import { useRouter } from "flareact/router"
+import { useState } from "react"
 
 export async function getEdgeProps() {
 
@@ -15,34 +15,48 @@ export async function getEdgeProps() {
 
 export default function Index({ apfel }) {
 
-    const handleSubmit = (event) => {
+    const [formValues, setFormValues] = useState({
+        url: apfel,
+        share_with: ""
+    })
 
+    const handleSubmit = (event) => {
+        event.preventDefault()
     }
 
     const handleChange = (event) => {
-
+        let v = { ...formValues } // shallow copy formValues
+        v[event.target.name] = event.target.value // change the field
+        setFormValues(v) // set it to state
     }
+
+    console.log(formValues)
 
     return (
         <>
-            <h1>Shared Music DB</h1>
+            <h1 className="m-4 text-xl font-bold">Shared Music DB</h1>
             <div>
                 <form
                     onSubmit={handleSubmit}
+                    className="flex flex-col w-2/3 m-auto mt-16"
                 >
-                    <lable>URL (only Youtube and Youtube Music links are supported)</lable>
+                    <lable>URL <span className="text-gray-500 italic">(only Youtube and Youtube Music links are supported)</span></lable>
                     <input
                         type="text"
                         name="url"
+                        value={formValues.url}
                         onChange={handleChange}
+                        className="mb-4 border rounded"
                     />
                     <lable>Share with</lable>
                     <input
                         type="text"
                         name="share_with"
+                        value={formValues.share_with}
                         onChange={handleChange}
+                        className="mb-4 border rounded"
                     />
-                    <input type="submit" />
+                    <input type="submit" value="Submit" className="w-2/3 m-auto"/>
                 </form>
             </div>
         </>
