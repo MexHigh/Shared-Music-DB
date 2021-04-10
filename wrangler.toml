@@ -1,10 +1,20 @@
 name = "shared-music-db"
 type = "webpack"
-account_id = ""
-workers_dev = true
-route = ""
-zone_id = ""
 webpack_config = "node_modules/flareact/webpack"
+
+account_id = "db7060081e8c2ca8e98189dbb3534b28"
+workers_dev = true
+
+#zone_id = ""
+#route = ""
+
+kv_namespaces = [
+    {
+        binding = "MDB",
+        id = "5c4625e80d7845ac9cc0e30e818c5af8",
+        preview_id = "5c4625e80d7845ac9cc0e30e818c5af8"
+    }
+]
 
 [site]
 bucket = "out"
