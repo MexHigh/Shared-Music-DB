@@ -9,11 +9,7 @@ workers_dev = true
 #route = ""
 
 kv_namespaces = [
-    {
-        binding = "MDB",
-        id = "5c4625e80d7845ac9cc0e30e818c5af8",
-        preview_id = "5c4625e80d7845ac9cc0e30e818c5af8"
-    }
+    {binding = "MDB",id = "5c4625e80d7845ac9cc0e30e818c5af8",preview_id = "5c4625e80d7845ac9cc0e30e818c5af8"}
 ]
 
 [site]
