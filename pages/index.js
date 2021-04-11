@@ -18,7 +18,7 @@ export default function Index({ tracks }) {
     return (
         <>
             <h1 className="m-4 text-xl font-bold">Shared Music DB</h1>
-            <div className="w-2/3 max-w-xl m-auto my-10">
+            <div className="w-2/3 max-w-xl my-10 mx-auto">
                 <Adder />
             </div>
             <div>

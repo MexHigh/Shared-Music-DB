@@ -1,11 +1,6 @@
 export function extractVideoId(url) {
-    try {
-        let splat = url.split("v=")[1].split("&")[0]
-        return splat
-    } catch (e) {
-        console.log(e.toString())
-        return null
-    }
+    let splat = url.split("v=")[1].split("&")[0]
+    return splat
 }
 
 // this can be spreaded right inside the KV database

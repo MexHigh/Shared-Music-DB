@@ -1,25 +1,22 @@
+import { emptyResponse, errorResponse, objectResponse } from "../../../utils/responses"
 import { extractVideoId, getVideoInfosById } from "../../../utils/video"
 
 export default async function Add(event) {
     
     if (event.request.method !== "POST") {
-        return new Response(null, {status: 405}) // method not allowed
+        return emptyResponse(405) // method not allowed
     }
 
     // parse request body
     let jsonBody = await event.request.json().catch(e => console.log(e))
     if (!jsonBody) {
-        return new Response(JSON.stringify({
-            error: "no body supplied"
-        }), {status: 400})
+        return errorResponse("no body supplied")
     }
 
     // check for JSON fields
     let { url, shared_by, shared_with } = jsonBody
     if (!url || !shared_by || !shared_with) {
-        return new Response(JSON.stringify({
-            error: `missing fields in body (want "url", "shared_by" and "shared_with")`
-        }), {status: 400})
+        return new errorResponse(`missing fields in body (want "url", "shared_by" and "shared_with")`)
     }
 
     // get old tracks object
@@ -28,11 +25,14 @@ export default async function Add(event) {
     )
 
     // check if video ID was already submitted
-    let vId = extractVideoId(url)
+    let vId
+    try {
+        vId = extractVideoId(url)
+    } catch (e) {
+        return errorResponse("not a video URL")
+    }
     if (old.hasOwnProperty(vId)) {
-        return new Response(JSON.stringify({
-            error: "track already submitted"
-        }), {status: 409})
+        return errorResponse("track already submitted", 409)
     }
 
     // get video infos from youtube API
@@ -49,8 +49,6 @@ export default async function Add(event) {
 
     // submit new tracks object to KV store
     await MDB.put("tracks", JSON.stringify(old, null, 4))
-    return new Response(JSON.stringify({
-        created: old[vId]
-    }, null, 4), {status: 201})
+    return objectResponse({ created: old[vId] }, 201)
 
 }
