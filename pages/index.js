@@ -15,17 +15,23 @@ export async function getEdgeProps() {
 }
 
 export default function Index({ tracks }) {
-
     return (
         <>
             <h1 className="m-4 text-xl font-bold">Shared Music DB</h1>
-            <Adder />
-            <div className="border border-red-500">
+            <div className="w-2/3 max-w-xl m-auto my-10">
+                <Adder />
+            </div>
+            <div>
                 {
                     Object.entries(tracks).map(([vId, v]) =>
                         <Track 
                             key={vId}
-                            url={v.url}  
+                            url={v.url}
+                            shared_by={v.shared_by}
+                            shared_with={v.shared_with}
+                            thumbnail={v.thumbnail}
+                            title={v.title}
+                            artist={v.channelTitle}
                         />
                     )
                 }

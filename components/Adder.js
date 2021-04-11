@@ -17,10 +17,11 @@ export default function Adder() {
     }
 
     return (
-        <div>
+        <div className="m-auto border rounded-xl shadow-lg px-10 py-6">
+            <h1 className="font-bold mb-6 text-center text-lg">Share a track</h1>
             <form
                 onSubmit={handleSubmit}
-                className="flex flex-col w-2/3 m-auto mt-16"
+                className="flex flex-col"
             >
                 <lable>URL <span className="text-gray-500 italic">(only Youtube and Youtube Music links are supported)</span></lable>
                 <input
@@ -28,16 +29,16 @@ export default function Adder() {
                     name="url"
                     value={formValues.url}
                     onChange={handleChange}
-                    className="mb-4 border rounded"
+                    className="mb-4 border rounded p-1"
                 />
                 <lable>Share with</lable>
                 <input
                     type="text"
                     name="share_with"
                     value="not implemented"
-                    className="mb-4 border rounded"
+                    className="mb-4 border rounded p-1"
                 />
-                <input type="submit" value="Submit" className="w-2/3 m-auto"/>
+                <input type="submit" value="Submit" className="w-1/3 mx-auto mt-4 rounded"/>
             </form>
         </div>
     )
