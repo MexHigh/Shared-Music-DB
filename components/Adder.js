@@ -1,6 +1,7 @@
 import { useState } from "react"
+import CardWrapper from "./CardWrapper"
 
-export default function Adder() {
+export default function Adder({ who, users }) {
 
     const [ formValues, setFormValues ] = useState({
         url: "",
@@ -32,8 +33,7 @@ export default function Adder() {
     }
 
     return (
-        <div className="border rounded-xl shadow-lg px-10 py-6">
-            <h1 className="font-bold mb-6 text-lg">Share a track</h1>
+        <CardWrapper title="Share a track">
             <form
                 onSubmit={handleSubmit}
                 className="flex flex-col"
@@ -66,6 +66,6 @@ export default function Adder() {
                     }
                 </div>
             </form>
-        </div>
+        </CardWrapper>
     )
 }
