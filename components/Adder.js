@@ -5,7 +5,6 @@ export default function Adder({ who, users }) {
 
     const [ formValues, setFormValues ] = useState({
         url: "",
-        shared_by: "User 1",
         shared_with: "User 2"
     })
 
@@ -15,6 +14,7 @@ export default function Adder({ who, users }) {
         event.preventDefault()
 
         let v = { ...formValues }
+        v.shared_by = who
 
         alert(`Committing track:\n${JSON.stringify(v, null, 4)}`)
         let r = await fetch("/api/track/add", {
@@ -54,7 +54,7 @@ export default function Adder({ who, users }) {
                     className="mb-4 border rounded p-1"
                 />
                 <div className="mt-4 flex justify-between">
-                    <input type="submit" value="Submit" className="w-1/3 rounded"/>
+                    <input type="submit" value="Submit" className="w-28 rounded"/>
                     { response &&
                         <p className="w-2/3 px-10 truncate">
                             {

@@ -21,7 +21,7 @@ export default function Auth({ who, setWho, users }) {
                             type="submit"
                             value="Logout"
                             onClick={() => setWho(null)}
-                            className="w-2/3 mt-8 rounded"
+                            className="w-28 mt-8 rounded"
                         />
                     </div>
                     :
@@ -47,7 +47,7 @@ export default function Auth({ who, setWho, users }) {
                             <input 
                                 type="submit" 
                                 value="Login"
-                                className="w-2/3 rounded mt-8"
+                                className="w-28 rounded mt-8"
                             />
                         </form>
                     </div>
