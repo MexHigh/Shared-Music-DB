@@ -44,6 +44,7 @@ export default async function Add(event) {
         url: url,
         shared_by: shared_by,
         shared_with: shared_with,
+        shared_at: Date.now(),
         ...vInfos
     }
 

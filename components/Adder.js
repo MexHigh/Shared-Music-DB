@@ -4,8 +4,8 @@ export default function Adder() {
 
     const [ formValues, setFormValues ] = useState({
         url: "",
-        shared_by: "Authenticated User (TODO)",
-        shared_with: "selin"
+        shared_by: "User 1",
+        shared_with: "User 2"
     })
 
     const [ response, setResponse ] = useState()
